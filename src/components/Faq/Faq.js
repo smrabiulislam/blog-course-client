@@ -33,10 +33,12 @@ const Faq = () => {
                             </details>
                             <details className="w-full rounded-lg ring-1 ring-purple-600">
                                 <summary className="px-4 py-6">
-                                    How to install tailwind css in react js ?
+                                    Can I use Tailwind CSS in React?
                                 </summary>
                                 <p className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-600">
-                                    What are synthetic events in React?
+                                    Tailwind CSS is a utility-first CSS framework which makes it very easy to apply
+                                    great styling to your React web application by choosing from the framework's ready-made
+                                    CSS classes.
                                 </p>
                             </details>
                         </div>
