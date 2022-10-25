@@ -13,6 +13,12 @@ const Header = () => {
                     <Link className='text-indigo-500 px-5' to='/'>Home</Link>
                     <Link className='text-indigo-500 px-5' to='/courses'>Courses</Link>
                     <Link className='text-indigo-500 px-5' to='/blog'>Blog</Link>
+                    <Link className='text-indigo-500 px-5' to='/faq'>Faq</Link>
+
+                </div>
+                <div>
+                    <button className='mx-2 bg-indigo-600 hover:bg-violet-600 py-2 px-4 text-white rounded-md'>Sign In</button>
+                    <button className='mx-2 bg-indigo-600 hover:bg-violet-600 py-2 px-4 text-white rounded-md'>Sign Up</button>
 
                 </div>
             </nav>

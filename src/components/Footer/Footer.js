@@ -2,8 +2,8 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div>
-            <h1>this is footer section</h1>
+        <div className='border-t-2 border-indigo-500 py-5'>
+            <h1>Copyright ©2022 Blog Course</h1>
         </div>
     );
 };
