@@ -4,22 +4,22 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
-    const [categories, setCategories] = useState([]);
+    const [course, setCourse] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/course-categories')
+        fetch('http://localhost:5000/course')
             .then(res => res.json())
-            .then(data => setCategories(data))
+            .then(data => setCourse(data))
     }, [])
     return (
-        <div>
-            <h2>Course Category: {categories.length}</h2>
+        <div className='p-10 rounded-lg shadow-2xl border-2 border-indigo-500 mx-2'>
+            <h2>Course Category: {course.length}</h2>
             <hr></hr>
-            <div className='text-left'>
+            <div className='text-left '>
                 {
-                    categories.map(category => <p
-                        key={category.id}>
-                        <Link to={`/category/${category.id}`}>{category.name}</Link>
+                    course.map(course => <p
+                        key={course.id}>
+                        <Link to={`/course/${course.id}`}>{course.name}</Link>
                     </p>)
                 }
             </div>
