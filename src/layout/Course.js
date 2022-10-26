@@ -14,6 +14,7 @@ const Course = () => {
                         <img className='h-52  ' src={coursec.picture} />
                         <h1 className='mb-2 text-xl text-left text-red-700'>{coursec.name}</h1>
                         <p className='text-sm text-left'>{coursec.about.slice(0, 200)}</p>
+                        <h1 className='text-2xl text-left mt-2'>${coursec.price}</h1>
                     </div>
                     <div className='flex justify-between mt-8'>
                         <div className='flex my-2'>
