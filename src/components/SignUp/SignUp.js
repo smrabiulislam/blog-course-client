@@ -1,8 +1,42 @@
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import app from '../../Firebase/firebase.init';
 import logo from '../../image/Screenshot_46-removebg-preview.png'
 
+const auth = getAuth(app);
+
 const SignUp = () => {
+    const [passwordError, setPasswordError] = useState('');
+    const [success, setSuccess] = useState(false);
+    const handleRegister = (event) => {
+        event.preventDefault();
+        setSuccess(false);
+
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+        if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
+            setPasswordError('Please provide at leats two uppercase')
+            return;
+        }
+        setPasswordError('');
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setSuccess(true);
+                form.reset();
+            })
+            .catch(error => {
+                console.error('error', error);
+                setPasswordError(error.message);
+            })
+
+    }
+
     return (
         <div className="container mx-auto px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-lg sm:rounded-lg">
             <img
@@ -10,22 +44,7 @@ const SignUp = () => {
                 src={logo}
                 alt="Your Company"
             />
-            <form>
-                <div>
-                    <label
-                        htmlFor="name"
-                        className="block text-left text-sm font-medium text-gray-700 undefined"
-                    >
-                        Name
-                    </label>
-                    <div className="flex flex-col items-start">
-                        <input
-                            type="text"
-                            name="name"
-                            className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                        />
-                    </div>
-                </div>
+            <form onSubmit={handleRegister}>
                 <div className="mt-4">
                     <label
                         htmlFor="email"
@@ -37,6 +56,7 @@ const SignUp = () => {
                         <input
                             type="email"
                             name="email"
+                            required
                             className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                         />
                     </div>
@@ -52,23 +72,12 @@ const SignUp = () => {
                         <input
                             type="password"
                             name="password"
+                            required
                             className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                         />
-                    </div>
-                </div>
-                <div className="mt-4">
-                    <label
-                        htmlFor="password_confirmation"
-                        className="block text-left text-sm font-medium text-gray-700 undefined"
-                    >
-                        Confirm Password
-                    </label>
-                    <div className="flex flex-col items-start">
-                        <input
-                            type="password"
-                            name="password_confirmation"
-                            className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                        />
+                        <p className='text-red-600'>{passwordError}</p>
+                        {success && <p>User Created Successfully</p>}
+
                     </div>
                 </div>
                 <a
