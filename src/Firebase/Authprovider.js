@@ -34,18 +34,16 @@ const AuthProvider = ({ children }) => {
 
     }
 
+    const signInWithGithub = (githubProvider) => {
+        signInWithPopup(auth, githubProvider)
+
+    }
+
     const logOut = () => {
         setLoading(true);
         return signOut(auth);
 
     }
-
-    const verifyEmail = () => {
-        return sendEmailVerification(auth.currentUser);
-    }
-
-
-
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -73,7 +71,7 @@ const AuthProvider = ({ children }) => {
         logOut,
         updateUserProfile,
         loading,
-        verifyEmail
+        signInWithGithub
 
     }
     return (

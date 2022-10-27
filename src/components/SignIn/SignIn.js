@@ -1,19 +1,17 @@
-import { LockClosedIcon } from '@heroicons/react/20/solid'
-import logo from '../../image/Screenshot_46-removebg-preview.png'
-
+import { LockClosedIcon } from '@heroicons/react/20/solid';
+import logo from '../../image/Screenshot_46-removebg-preview.png';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Firebase/Authprovider';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
-import toast from 'react-hot-toast';
+
 
 
 const SignIn = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [error, setError] = useState('');
-    const { providerLogin, signIn } = useContext(AuthContext)
+    const { providerLogin, signIn, signInWithGithub } = useContext(AuthContext)
 
     const from = location.state?.from?.pathname || '/';
 
@@ -31,12 +29,8 @@ const SignIn = () => {
                 form.reset();
                 setError('');
 
-                if (user.emailVerified) {
-                    navigate(from, { replace: true });
-                }
-                else {
-                    toast.error('Your EMail is Not Verified. PLease Verify your email address first!!')
-                }
+                navigate(from, { replace: true });
+
                 console.log('Login User from form', user)
             })
             .catch(error => {
