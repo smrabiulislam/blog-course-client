@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRef } from 'react';
 
 import { Link, useLoaderData, } from 'react-router-dom';
 import ReactToPrint from 'react-to-print';
@@ -6,12 +7,12 @@ import ReactToPrint from 'react-to-print';
 const Details = () => {
     const course = useLoaderData()
     console.log(course);
-
+    const ref = useRef()
     return (
         <div className=' '>
             <div className='grid md:grid-cols-4 md:px-20 py-20 gap-5'>
                 <div className="col-span-3 p-10 rounded-lg shadow-2xl border-2 border-indigo-500 mx-2">
-                    <div className='grid md:grid-cols-2 my-5'>
+                    <div ref={ref} className='grid md:grid-cols-2 my-5'>
                         <div className='col-span-1'>
                             <figure><img className=' h-68' src={course?.picture} alt="car!" /></figure>
                         </div>
@@ -34,10 +35,12 @@ const Details = () => {
                             <p className='text-xl text-left my-1'>Duration: {course.time}</p>
                             <p className='text-xl text-left my-1'>Total Enroll: {course.student}</p>
                             <p className='text-xl text-left my-1'>Price: ${course.price}</p>
-                            <Link className="card-actions justify-start mt-10">
+                            {/* <Link className="card-actions justify-start mt-10">
                                 <button className="btn btn-primary w-full  my-1 bg-indigo-600 hover:bg-violet-600 py-2 px-4 text-white rounded-md">Download Outline</button>
-                            </Link>
-                            <ReactToPrint />
+                            </Link> */}
+                            <ReactToPrint trigger={() => <button className="btn btn-primary w-full  my-1 bg-indigo-600 hover:bg-violet-600 py-2 px-4 text-white rounded-md">Download Outline</button>}
+                                content={() => ref.current}
+                            />
                             <Link to='/checkout' className="card-actions">
                                 <button className="btn btn-primary w-full  my-1 bg-indigo-600 hover:bg-violet-600 py-2 px-4 text-white rounded-md">Enroll now</button>
                             </Link>
