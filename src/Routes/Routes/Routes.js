@@ -7,7 +7,7 @@ import Faq from "../../components/Faq/Faq";
 import Home from "../../components/Home/Home/Home";
 import SignIn from "../../components/SignIn/SignIn";
 import SignUp from "../../components/SignUp/SignUp";
-import Coursedetails from "../../layout/Coursedetails";
+import Details from "../../layout/Details";
 import Main from "../../layout/Main";
 import PrivateRoute from "./PrivateRoute";
 
@@ -22,7 +22,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/courses',
-                loader: () => fetch('http://localhost:5000/course/'),
+                loader: () => fetch('https://blog-course-server-assignment-10.vercel.app/course/'),
                 element: <Courses></Courses>
             },
             {
@@ -35,8 +35,8 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/course/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`),
-                element: <Coursedetails></Coursedetails>
+                loader: ({ params }) => fetch(`https://blog-course-server-assignment-10.vercel.app/course/${params.id}`),
+                element: <Details></Details>
             },
             {
                 path: '/signin',

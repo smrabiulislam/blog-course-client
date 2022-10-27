@@ -1,7 +1,7 @@
 # Assignment-10
 
 # Website Name:
-[Blog-Course]()
+[Blog-Course](https://blog-course-assignment-10.web.app)
 
 # Assignment Repo link:
 [https://github.com/programming-hero-web-course1/b610-learning-platform-client-side-smrabiulislam.git](https://github.com/programming-hero-web-course1/b610-learning-platform-client-side-smrabiulislam.git)
@@ -10,7 +10,10 @@
 [https://github.com/programming-hero-web-course1/b610-lerning-platform-server-side-smrabiulislam.git](https://github.com/programming-hero-web-course1/b610-lerning-platform-server-side-smrabiulislam.git)
 
 # Live Website Link:
-[]()
+[https://blog-course-assignment-10.web.app](https://blog-course-assignment-10.web.app)
+
+# Live server link:
+[https://blog-course-server-assignment-10.vercel.app](https://blog-course-server-assignment-10.vercel.app)
 
 # Working Step:
 

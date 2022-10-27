@@ -7,7 +7,7 @@ const Sidebar = () => {
     const [course, setCourse] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/course')
+        fetch('https://blog-course-server-assignment-10.vercel.app/course')
             .then(res => res.json())
             .then(data => setCourse(data))
     }, [])
