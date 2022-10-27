@@ -5,6 +5,8 @@ import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Firebase/Authprovider';
 import logo from '../../image/Screenshot_46-removebg-preview.png';
+import Toogle from './Toogle';
+
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -24,12 +26,13 @@ const Header = () => {
                             <div className="flex-shrink-0">
                                 <Link className='text-lg font-semibold' to='/'><img className='h-16 ' src={logo} /></Link>
                             </div>
-                            <div className="hidden md:block">
+                            <div className="flex hidden md:block">
                                 <div className="ml-10 flex items-baseline space-x-4">
                                     <Link className='text-indigo-500 px-5' to='/'>Home</Link>
                                     <Link className='text-indigo-500 px-5' to='/courses'>Courses</Link>
                                     <Link className='text-indigo-500 px-5' to='/blog'>Blog</Link>
                                     <Link className='text-indigo-500 px-5' to='/faq'>Faq</Link>
+                                    <Toogle></Toogle>
                                 </div>
                             </div>
                             <div className='flex  gap-2'>
