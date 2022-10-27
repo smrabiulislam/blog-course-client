@@ -1,11 +1,20 @@
 import React from 'react';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const Checkout = () => {
+    const CheckOutPayment = (e) => {
+        e.preventDefault();
+        toast.success("Payment Successful");
+        navigate("/");
+    }
+    const navigate = useNavigate();
+
     return (
 
         <div className="my-5 w-1/2 container mx-auto p-10 rounded-lg shadow-2xl border-2 border-indigo-500">
             <h1 className='text-center text-xl'>Checkout</h1>
-            <form action="#" method="POST">
+            <form onSubmit={CheckOutPayment} action="#" method="POST">
                 <div className="">
                     <label htmlFor="first-name" className="block text-sm py-2 text-left font-medium text-gray-700">
                         First name

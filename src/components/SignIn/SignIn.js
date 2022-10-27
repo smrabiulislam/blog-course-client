@@ -74,8 +74,8 @@ const SignIn = () => {
     }
     return (
         <div>
-            <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-                <div className="w-full max-w-md space-y-8">
+            <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8 ">
+                <div className="w-full max-w-md space-y-8 p-4 rounded-lg shadow-2xl border-2">
                     <div>
                         <img
                             className="mx-auto h-12 w-auto"
@@ -158,6 +158,9 @@ const SignIn = () => {
                                 </span>
                                 Sign in
                             </button>
+                        </div>
+                        <div>
+                            <Link to='/signup'><p>Create a new User</p></Link>
                         </div>
                     </form>
                 </div>

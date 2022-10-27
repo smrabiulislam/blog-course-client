@@ -15,11 +15,12 @@ const Sidebar = () => {
         <div className='p-10 rounded-lg shadow-2xl border-2 border-indigo-500 mx-2'>
             <h2>Course Category: {course.length}</h2>
             <hr></hr>
-            <div className='text-left '>
+            <div className='text-left  '>
                 {
                     course.map(course => <p
+                        className='p-2 my-2 rounded-lg shadow-2xl border-2 border-indigo-500 mx-2'
                         key={course.id}>
-                        <Link to={`/course/${course.id}`}>{course.name}</Link>
+                        <Link className='' to={`/course/${course.id}`}>{course.name}</Link>
                     </p>)
                 }
             </div>

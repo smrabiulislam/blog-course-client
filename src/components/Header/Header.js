@@ -16,7 +16,7 @@ const Header = () => {
     }
     const [isOpen, setIsOpen] = useState(false);
     return (
-        <div className=' py-5 border-b-2 border-indigo-500'>
+        <div className='sticky top-0 bg-slate-50 z-40 py-5 border-b-2 border-indigo-500'>
             <nav className="">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-around items-center w-full ">
@@ -32,41 +32,40 @@ const Header = () => {
                                     <Link className='text-indigo-500 px-5' to='/faq'>Faq</Link>
                                 </div>
                             </div>
-                            <div>
+                            <div className='flex  gap-2'>
+                                <div className='mt-2'>
+                                    {
+                                        user?.uid ? <Link onClick={userLogOut}
 
-
-                                {
-                                    user?.uid ? <Link onClick={userLogOut}
-
-                                        className="px-4 text-center py-2 text-gray-800 bg-white rounded-md shadow hover:bg-gray-100"
-                                    >
-                                        Logout
-                                    </Link> :
-                                        <>
-                                            <Link to='/signin'><button className='mx-2 bg-indigo-600 hover:bg-violet-600 py-2 px-4 text-white rounded-md'>Sign In</button></Link>
-                                            <Link to='/signup'><button className='mx-2 bg-indigo-600 hover:bg-violet-600 py-2 px-4 text-white rounded-md'>Sign Up</button></Link>
-                                        </>
-                                }
-
-                            </div>
-                            <div className="gap-2">
-                                {user?.uid && (
-                                    <div>
-                                        {user?.photoURL ? (
-                                            <img
-                                                className="w-10 h-10 text-white rounded-md"
-                                                alt="user icon"
-                                                title={user?.displayName}
-                                                src={user.photoURL}
-                                            />
-                                        ) : (
-                                            <FaUser
-                                                title={user?.displayName}
-                                                className="w-10 h-9 text-white rounded-md"
-                                            ></FaUser>
-                                        )}
-                                    </div>
-                                )}
+                                            className=" mx-2 bg-indigo-600 hover:bg-violet-600 py-2 px-4 text-white rounded-md"
+                                        >
+                                            Logout
+                                        </Link> :
+                                            <>
+                                                <Link to='/signin'><button className='mx-2 bg-indigo-600 hover:bg-violet-600 py-2 px-4 text-white rounded-md'>Sign In</button></Link>
+                                                <Link to='/signup'><button className='mx-2 bg-indigo-600 hover:bg-violet-600 py-2 px-4 text-white rounded-md'>Sign Up</button></Link>
+                                            </>
+                                    }
+                                </div>
+                                <div className="gap-2">
+                                    {user?.uid && (
+                                        <div>
+                                            {user?.photoURL ? (
+                                                <img
+                                                    className="w-10 h-10 text-white rounded-md"
+                                                    alt="user icon"
+                                                    title={user?.displayName}
+                                                    src={user.photoURL}
+                                                />
+                                            ) : (
+                                                <FaUser
+                                                    title={user?.displayName}
+                                                    className="w-10 h-9 text-white rounded-md"
+                                                ></FaUser>
+                                            )}
+                                        </div>
+                                    )}
+                                </div>
                             </div>
 
                         </div>

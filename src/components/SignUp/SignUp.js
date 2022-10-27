@@ -68,7 +68,7 @@ const SignUp = () => {
             });
     };
     return (
-        <div className="container mx-auto px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-lg sm:rounded-lg">
+        <div className="container mx-auto px-6 py-4 my-6  bg-white sm:max-w-lg sm:rounded-lg rounded-lg shadow-2xl border-2">
             <img
                 className='mx-auto h-12 w-auto'
                 src={logo}

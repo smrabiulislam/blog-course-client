@@ -5,7 +5,7 @@ import img2 from '../../../image/Southcape_Textured_Crew_Neck_Sweater_Lister_1_1
 import img3 from '../../../image/tp-best-mens-hairstyles.jpg'
 const Testimonial = () => {
     return (
-        <div className='container mx-auto'>
+        <div className='container mx-auto my-2'>
             <h1 className='text-left text-xl my-4 font-semibold'>What's my student say</h1>
             <div className=' mt-4 grid md:grid-cols-3 gap-2'>
                 <div className=' p-10 rounded-lg shadow-2xl border-2 border-indigo-500 '>

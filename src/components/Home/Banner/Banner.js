@@ -7,25 +7,25 @@ const Banner = () => {
         {
             name: 'Personal Computer',
             description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+                'A personal computer (PC) is a multi-purpose microcomputer whose size, capabilities, and price make it feasible for individual use.',
             icon: ComputerDesktopIcon,
         },
         {
             name: 'Sign Language',
             description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+                'Sign languages are languages that use the visual-manual modality to convey meaning. Sign languages are expressed through manual articulation in combination .',
             icon: LanguageIcon,
         },
         {
             name: 'Academic',
             description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+                'Someone who is academic is good at studying. The system is failing most disastrously among less academic children.',
             icon: AcademicCapIcon,
         },
         {
             name: 'Auto Mobile',
             description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+                'automobile, byname auto, also called motorcar or car, a usually four-wheeled vehicle designed primarily for passenger transportatione.',
             icon: DevicePhoneMobileIcon,
         },
     ]
