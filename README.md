@@ -16,6 +16,13 @@
 [https://blog-course-server-assignment-10.vercel.app](https://blog-course-server-assignment-10.vercel.app)
 
 # Working Step:
+1. Create a react project
+2. install react-router, tailwind css
+3. create components and work on it
+4. After complete design part then i did setup firebase
+5. Connected form to firebase
+6. setup private route for course details 
+8. setup pdf genarator
 
 
 # Getting Started with Create React App
