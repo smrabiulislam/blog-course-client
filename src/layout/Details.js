@@ -1,5 +1,6 @@
-import React from 'react';
 import jsPDF from 'jspdf';
+import React from 'react';
+
 import { Link, useLoaderData, } from 'react-router-dom';
 
 const Details = () => {
