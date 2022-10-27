@@ -1,8 +1,77 @@
-import React from 'react';
 import { LockClosedIcon } from '@heroicons/react/20/solid'
 import logo from '../../image/Screenshot_46-removebg-preview.png'
 
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Firebase/Authprovider';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
+import toast from 'react-hot-toast';
+
+
 const SignIn = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const [error, setError] = useState('');
+    const { providerLogin, signIn } = useContext(AuthContext)
+
+    const from = location.state?.from?.pathname || '/';
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        console.log(email, password);
+
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                form.reset();
+                setError('');
+
+                if (user.emailVerified) {
+                    navigate(from, { replace: true });
+                }
+                else {
+                    toast.error('Your EMail is Not Verified. PLease Verify your email address first!!')
+                }
+                console.log('Login User from form', user)
+            })
+            .catch(error => {
+                console.error('SIgn In from From User', error)
+                setError(error.message);
+            })
+
+    }
+    const googleProvider = new GoogleAuthProvider();
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+
+                navigate('/');
+                console.log('New User From Google', user)
+            })
+            .catch(error => {
+                console.error('Google User SIgn In error', error);
+
+            })
+    }
+    const githubProvider = new GithubAuthProvider();
+    const handleGithubSignIn = () => {
+        providerLogin(githubProvider)
+            .then(result => {
+                const user = result.user;
+                navigate('/');
+                console.log('New User From Github', user)
+            })
+            .catch(error => {
+                console.error('Github User SIgn In error', error);
+
+            })
+    }
     return (
         <div>
             <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -23,7 +92,7 @@ const SignIn = () => {
                             </a>
                         </p>
                     </div>
-                    <form className="mt-8 space-y-6" action="#" method="POST">
+                    <form onSubmit={handleSubmit} className="mt-8 space-y-6" action="#" method="POST">
                         <input type="hidden" name="remember" defaultValue="true" />
                         <div className="-space-y-px rounded-md shadow-sm">
                             <div>
@@ -67,6 +136,9 @@ const SignIn = () => {
                                 <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
                                     Remember me
                                 </label>
+                            </div>
+                            <div className='text-red-600'>
+                                {error}
                             </div>
 
                             <div className="text-sm">

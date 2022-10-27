@@ -1,14 +1,19 @@
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
+import { useContext } from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Firebase/Authprovider';
 import app from '../../Firebase/firebase.init';
 import logo from '../../image/Screenshot_46-removebg-preview.png'
 
 const auth = getAuth(app);
 
 const SignUp = () => {
+    const { providerLogin } = useContext(AuthContext);
     const [passwordError, setPasswordError] = useState('');
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
     const [success, setSuccess] = useState(false);
     const handleRegister = (event) => {
         event.preventDefault();
@@ -36,7 +41,32 @@ const SignUp = () => {
             })
 
     }
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+            .then((result) => {
+                console.log(result.user);
+                setError("");
+                navigate("/");
+            })
+            .catch((error) => {
+                setError(error.message);
+            });
+    };
+
+    const handleGithubSignIn = () => {
+        providerLogin(githubProvider)
+            .then((result) => {
+                console.log(result.user);
+                setError("");
+                navigate("/");
+            })
+            .catch((error) => {
+                setError(error.message);
+            });
+    };
     return (
         <div className="container mx-auto px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-lg sm:rounded-lg">
             <img
@@ -105,6 +135,7 @@ const SignUp = () => {
             </div>
             <div className="my-6 space-y-2">
                 <button
+                    onClick={handleGoogleSignIn}
                     aria-label="Login with Google"
                     type="button"
                     className="flex items-center justify-center w-full p-2 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
@@ -119,6 +150,7 @@ const SignUp = () => {
                     <p>Login with Google</p>
                 </button>
                 <button
+                    onClick={handleGithubSignIn}
                     aria-label="Login with GitHub"
                     role="button"
                     className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"

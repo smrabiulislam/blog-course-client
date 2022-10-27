@@ -1,9 +1,19 @@
 import { Transition } from '@headlessui/react';
 import React, { useState } from 'react';
+import { useContext } from 'react';
+import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Firebase/Authprovider';
 import logo from '../../image/Screenshot_46-removebg-preview.png';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const userLogOut = () => {
+        logOut()
+            .then(() => {
+                console.log('userLogOut');
+            })
+    }
     const [isOpen, setIsOpen] = useState(false);
     return (
         <div className=' py-5 border-b-2 border-indigo-500'>
@@ -23,11 +33,42 @@ const Header = () => {
                                 </div>
                             </div>
                             <div>
-                                <Link to='/signin'><button className='mx-2 bg-indigo-600 hover:bg-violet-600 py-2 px-4 text-white rounded-md'>Sign In</button></Link>
-                                <Link to='/signup'><button className='mx-2 bg-indigo-600 hover:bg-violet-600 py-2 px-4 text-white rounded-md'>Sign Up</button></Link>
 
+
+                                {
+                                    user?.uid ? <Link onClick={userLogOut}
+
+                                        className="px-4 text-center py-2 text-gray-800 bg-white rounded-md shadow hover:bg-gray-100"
+                                    >
+                                        Logout
+                                    </Link> :
+                                        <>
+                                            <Link to='/signin'><button className='mx-2 bg-indigo-600 hover:bg-violet-600 py-2 px-4 text-white rounded-md'>Sign In</button></Link>
+                                            <Link to='/signup'><button className='mx-2 bg-indigo-600 hover:bg-violet-600 py-2 px-4 text-white rounded-md'>Sign Up</button></Link>
+                                        </>
+                                }
 
                             </div>
+                            <div className="gap-2">
+                                {user?.uid && (
+                                    <div>
+                                        {user?.photoURL ? (
+                                            <img
+                                                className="w-10 h-10 text-white rounded-md"
+                                                alt="user icon"
+                                                title={user?.displayName}
+                                                src={user.photoURL}
+                                            />
+                                        ) : (
+                                            <FaUser
+                                                title={user?.displayName}
+                                                className="w-10 h-9 text-white rounded-md"
+                                            ></FaUser>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
+
                         </div>
                         <div className="-mr-2 flex md:hidden">
                             <button
